@@ -36,9 +36,6 @@ func NewApp() *flag.App {
 		HideHelp: true,
 		Flags:    app.flags(),
 		Action:   app.run,
-		OnUsageError: func(_ *flag.Context, err error, _ bool) error {
-			return application.NewErrUser(err.Error())
-		},
 	}
 }
 
