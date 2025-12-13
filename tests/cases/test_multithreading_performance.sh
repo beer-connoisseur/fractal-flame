@@ -10,7 +10,7 @@ measure_time() {
 
     # Измерение времени выполнения
     START_TIME=$(date +%s)
-    "$EXECUTABLE_PATH" -w 1920 -h 1080 -t "$threads" -o "$output_file"
+    "$EXECUTABLE_PATH" -w 1920 -h 1080 -t "$threads" -o "$output_file" -i 50000000 --seed 71 -s 4
     EXIT_CODE=$?
     END_TIME=$(date +%s)
 
