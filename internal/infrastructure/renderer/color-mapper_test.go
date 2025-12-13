@@ -102,7 +102,7 @@ func TestColorMapper_GeneratePalette(t *testing.T) {
 
 func TestNewHSVColorMapper(t *testing.T) {
 	t.Run("creates new color mapper", func(t *testing.T) {
-		mapper := NewHSVColorMapper()
+		mapper := NewColorMapper()
 		require.NotNil(t, mapper)
 		require.IsType(t, &ColorMapper{}, mapper)
 	})

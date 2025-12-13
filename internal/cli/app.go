@@ -16,7 +16,7 @@ type App struct {
 func NewApp() *flag.App {
 	histogramFactory := histogram.NewHistogramFactory()
 	transformationFactory := transformations.NewTransformationFactory()
-	colorMapper := renderer.NewHSVColorMapper()
+	colorMapper := renderer.NewColorMapper()
 	render := renderer.NewPNGRenderer()
 	symmetryApplier := renderer.NewSymmetryApplier()
 

@@ -8,7 +8,7 @@ import (
 
 type ColorMapper struct{}
 
-func NewHSVColorMapper() *ColorMapper {
+func NewColorMapper() *ColorMapper {
 	return &ColorMapper{}
 }
 
