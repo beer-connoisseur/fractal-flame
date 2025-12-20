@@ -22,21 +22,13 @@ func (re *PNGRenderer) Render(histogram domain.Histogram) image.Image {
 
 	for y := 0; y < height; y++ {
 		for x := 0; x < width; x++ {
-			img.Set(x, y, color.RGBA{A: 255})
-		}
-	}
-
-	for y := 0; y < height; y++ {
-		for x := 0; x < width; x++ {
 			histColor := histogram.GetColor(x, y)
 
-			if histColor.R > 0 || histColor.G > 0 || histColor.B > 0 {
-				r8 := uint8(histColor.R * 255.0)
-				g8 := uint8(histColor.G * 255.0)
-				b8 := uint8(histColor.B * 255.0)
+			r8 := uint8(histColor.R * 255.0)
+			g8 := uint8(histColor.G * 255.0)
+			b8 := uint8(histColor.B * 255.0)
 
-				img.Set(x, y, color.RGBA{R: r8, G: g8, B: b8, A: 255})
-			}
+			img.Set(x, y, color.RGBA{R: r8, G: g8, B: b8, A: 255})
 		}
 	}
 

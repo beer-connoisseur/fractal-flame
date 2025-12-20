@@ -28,8 +28,10 @@ func NewHistogram(width, height int) *HistField {
 }
 
 func (h *HistField) Add(x, y float64, color domain.Color) {
-	px := h.width - int(((domain.XMAX-float64(x))/(domain.XMAX-domain.XMIN))*float64(h.width))
-	py := h.height - int(((domain.YMAX-float64(y))/(domain.YMAX-domain.YMIN))*float64(h.height))
+	xNorm := (domain.XMAX - float64(x)) / (domain.XMAX - domain.XMIN)
+	yNorm := (domain.YMAX - float64(y)) / (domain.YMAX - domain.YMIN)
+	px := h.width - int(xNorm*float64(h.width))
+	py := h.height - int(yNorm*float64(h.height))
 
 	if px < 0 || px >= h.width || py < 0 || py >= h.height {
 		return
@@ -103,11 +105,11 @@ func (h *HistField) ApplyCorrection(gamma float64) error {
 func (h *HistField) Merge(other domain.Histogram) error {
 	otherHist, ok := other.(*HistField)
 	if !ok {
-		return errors.New("can't merge histogram")
+		return errors.New("can't merge histogram with wrong histogram type")
 	}
 
 	if h.width != otherHist.width || h.height != otherHist.height {
-		return errors.New("can't merge histogram")
+		return errors.New("can't merge histogram with histogram of other sizes")
 	}
 
 	for y := 0; y < h.height; y++ {

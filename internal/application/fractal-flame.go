@@ -102,7 +102,7 @@ func (f *FractalFlame) generateMultiThread(
 			x, y := r.Float64(), r.Float64()
 			totalWeight := utils.CalculateTotalWeight(transformations)
 
-			for i := -domain.SkipSteps; i < iterationsPerThread; i++ {
+			for i := -domain.SkipSteps; i < threadIterations; i++ {
 				if i%domain.LogFrequency == 0 && i > 0 {
 					mx.Lock()
 					completedIterations += domain.LogFrequency
